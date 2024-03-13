@@ -1,7 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>All Pokemons</h1>
+<h1>Pokédex</h1>
 
-A btn here to show all categories
+<h2>Categories</h2>
 
+
+
+<div class="pokemon-list" data-controller="pokemon">
+  <div class="pokemon">
+    <ul>
+      <% @pokemon_types.each do |type| %>
+        <li>
+          <%= link_to type[:name], "javascript:void(0);", data: { action: "click->pokemon#fetchPokemon", pokemon_type: type[:name] } %>
+        </li>
+
+        <%= render "pokemons/pokemon", type: type[:name] %>
+        
+      <% end %>
+    </ul> 
+  </div>
+</div>
+
+Pagination WIP: <%= @pagination %>
 <%= link_to "Back to init", root_path %>
