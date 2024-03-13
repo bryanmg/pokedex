@@ -17,7 +17,7 @@
     <div class="box">
       <strong>Type(s): </strong> 
       <% @pokemon.types.each do |type| %>
-        <p>Name: <%= type.type.name %></p>
+        <p>Name: <%= type[:type][:name] %></p>
       <% end %>
     </div>
     </div>
@@ -25,12 +25,23 @@
     <div class="box">
       <strong> Ability(ies): </strong>
       <% @pokemon.abilities.each do |ability| %>
-        <p>Name: <%= ability.ability.name %></p>
+        <p>Name: <%= ability[:ability][:name] %></p>
       <% end %> 
     </div>
     </div>
   </div>
-  <div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="box">
+        <strong>Move(s): </strong> <br/>
+        <% @pokemon.moves.each do |type| %>
+          <span class="tag is-light is-medium"><%= type[:move][:name] %></span>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <br/>
