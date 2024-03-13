@@ -1,6 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-Show the pokemon detail here
+<div data-controller="pokemon-full-info" data-pokemon-name="<%= @pokemon.name %>">
+  <h1><%= @pokemon.name %></h1>
+
+  <input type="hidden" value="<%= @pokemon.name %>" id="pokemon-name">
+  <img src="" alt="" data-pokemon-target="image" id="image" width="200" height="200">
+
+  <h2>Details:</h2>
+  <br/>
+  <br/>
+
+  <div>
+    <strong>Weight: </strong> <%= @pokemon.weight %>
+  </div>
+  <br/>
+
+  <div>
+    <strong>Type(s): </strong> 
+    <% @pokemon.types.each do |type| %>
+      <p>Name: <%= type.type.name %></p>
+    <% end %>
+  </div>
+  <br/>
+
+  <div>
+    <strong> Ability(ies): </strong>
+    <% @pokemon.abilities.each do |ability| %>
+      <p>Name: <%= ability.ability.name %></p>
+    <% end %> 
+  </div>
+</div>
+
+<br/>
 
 <%= link_to "Back to init", root_path %>
 <%= link_to "Previous page", pokemons_url %>

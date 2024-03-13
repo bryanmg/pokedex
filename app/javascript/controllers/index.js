@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import PokemonController from "./pokemon_controller"
 application.register("pokemon", PokemonController)
+
+import PokemonFullInfoController from "./pokemon_full_info_controller"
+application.register("pokemon-full-info", PokemonFullInfoController)

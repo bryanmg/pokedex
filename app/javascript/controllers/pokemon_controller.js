@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="pokemon"
 export default class extends Controller {
   createListItemWithData (pokemons) {
     const list = document.createElement("ul");

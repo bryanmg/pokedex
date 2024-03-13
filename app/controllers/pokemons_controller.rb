@@ -13,7 +13,9 @@ class PokemonsController < ApplicationController
   end
 
   # GET /pokemons/{id}
-  def show; end
+  def show
+    @pokemon = PokeApi.get(pokemon: params[:id])
+  end
 
   private
 
