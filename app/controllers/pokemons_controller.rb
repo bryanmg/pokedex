@@ -35,6 +35,6 @@ class PokemonsController < ApplicationController
 
   def set_pagination
     page = params[:page].to_i || 1
-    @pagination = { page: page, offset: PER_PAGE * page }
+    @pagination = { page:, offset: PER_PAGE * page }
   end
 end
