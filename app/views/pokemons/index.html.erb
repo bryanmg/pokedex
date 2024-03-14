@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="content is-medium pokemon-list" data-controller="pokemon">
+  <h1>Pokédex</h1>
+  <h2>Categories</h2>
+
+  <div class="pokemon">
+    <ul>
+      <% @pokemon_types.each do |type| %>
+        <%= link_to type[:name], "javascript:void(0);", class:"button is-link is-light", data: { action: "click->pokemon#fetchPokemon", pokemon_type: type[:name] } %>
+        <br/>
+        <br/>
+        <%= render "pokemons/pokemon", type: type[:name] %>
+      <% end %>
+    </ul> 
+  </div>
+  
+  <%= link_to "Back to init", root_path, class: "button is-link" %>
+</div>
+
+<br/>
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous <%= @pagination[:page] == 0 ? "is-disabled" : "" %>" href="<%= pokemons_path({page: @pagination[:page] - 1}) %>">Previous</a>
+  <a class="pagination-previous <%= @pagination[:page] == 3 ? "is-disabled" : "" %>" href="<%= pokemons_path({page: @pagination[:page] + 1}) %>">Next</a>
+
+  <ul class="pagination-list">
+    <% (@total_results / PER_PAGE).times do |index| %>
+      <li>
+        <a 
+          class="pagination-link <%= index == @pagination[:page] ? "is-current" : "" ;%>"
+          aria-label="Page 1"
+          aria-current="page"
+          href="<%= pokemons_path({page: index})%>"
+        >
+          <%=index+1 %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</nav>
