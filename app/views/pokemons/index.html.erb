@@ -18,8 +18,24 @@
   <%= link_to "Back to init", root_path, class: "button is-link" %>
 </div>
 
-
 <br/>
-<br/>
-Pagination WIP:  <%= @pagination %>
 
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous <%= @pagination[:page] == 0 ? "is-disabled" : "" %>" href="<%= pokemons_path({page: @pagination[:page] - 1}) %>">Previous</a>
+  <a class="pagination-previous <%= @pagination[:page] == 3 ? "is-disabled" : "" %>" href="<%= pokemons_path({page: @pagination[:page] + 1}) %>">Next</a>
+
+  <ul class="pagination-list">
+    <% (@total_results / PER_PAGE).times do |index| %>
+      <li>
+        <a 
+          class="pagination-link <%= index == @pagination[:page] ? "is-current" : "" ;%>"
+          aria-label="Page 1"
+          aria-current="page"
+          href="<%= pokemons_path({page: index})%>"
+        >
+          <%=index+1 %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</nav>
